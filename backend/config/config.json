@@ -1,0 +1,8 @@
+{
+  "DB_PORT" : 3306,
+  "DB_HOST" : "localhost",
+  "DB_Username" : "root",
+  "DB_Pass" : "root",
+  "DB_Name" : "test_create",
+  "DB_Table" : ["Pegawai"]
+}

@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  backend:
+    build: 
+      context: ./backend
+    ports:
+      - 1323:1323
+    restart: unless-stopped
+    environment: 
+      DB_HOST: db
+    depends_on: 
+      - db
+      
+
+  db:
+    build: 
+      context: ./db
+    expose: 
+      - "3306"
+    restart: unless-stopped
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
