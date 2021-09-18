@@ -19,7 +19,7 @@ services:
       context: frontend/
       dockerfile: DockerfileDev
     expose: 
-      - "1323"
+      - "3000"
     restart: "unless-stopped"
     depends_on: 
       - db
