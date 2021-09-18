@@ -7,3 +7,6 @@ If you want to try, please make sure docker and docker compose are installed.
   
   
 Postman : https://documenter.getpostman.com/view/17343050/U16qKPRz
+  
+
+Now with nginx proxy manager : https://github.com/jc21/nginx-proxy-manager

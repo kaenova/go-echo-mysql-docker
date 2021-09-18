@@ -1,9 +1,10 @@
 version: "3"
 
 services:
+  # backend
   backend:
     build: 
-      context: ./backend
+      context: backend/
     ports:
       - 1323:1323
     restart: unless-stopped
@@ -11,13 +12,46 @@ services:
       DB_HOST: db
     depends_on: 
       - db
-      
 
+  # databases
   db:
     build: 
-      context: ./db
+      context: db/
     expose: 
       - "3306"
     restart: unless-stopped
     environment: 
       MYSQL_ROOT_PASSWORD: root
+
+  # Proxy manager
+  nginx_manager:
+    image: 'jc21/nginx-proxy-manager:latest'
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '81:81'
+      - '443:443'
+    environment:
+      DB_MYSQL_HOST: "db_nginx"
+      DB_MYSQL_PORT: 3307
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+    volumes:
+      - ./nginx/data:/data
+      - ./nginx/letsencrypt:/etc/letsencrypt
+  db_nginx:
+    image: 'jc21/mariadb-aria:latest'
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+      MYSQL_TCP_PORT: 3307
+    expose: 
+      - "3307"
+    volumes:
+      - ./nginx/data/mysql:/var/lib/mysql
+
+  
