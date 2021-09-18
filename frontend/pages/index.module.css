@@ -1,0 +1,13 @@
+.container {
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+  @apply bg-white rounded-md p-3 shadow-lg
+}
+
+.list_container {
+  width: 50%;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  @apply bg-red-400 p-2 shadow-md rounded-md bg-gray-200 justify-self-center
+}
