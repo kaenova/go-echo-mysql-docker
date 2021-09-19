@@ -8,7 +8,7 @@ export default class HomeButton extends Component {
       <Link href="/">
         <a href="/">
           <span className="fixed z-10 bg-black p-1 rounded-md shadow-lg bottom-10 right-10">
-            <AiOutlineHome size="3rem" color="white" />
+            <AiOutlineHome size="2rem" color="white" />
           </span>
         </a>
       </Link>

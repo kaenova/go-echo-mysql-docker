@@ -11,7 +11,7 @@ export default function Home() {
       </h1>
       <p className="mt-3 text-center">
         Ini hanya percobaan Kaenova untuk membuat suatu web apps dengan 
-        Golang (Echo) [Backend] + MySQL [Database] + Docker - Docker Compose [Containerization] + Next.JS [Frontend]
+        Golang (Echo) [Backend] + Next.Js (+ Tailwind) [Frontend] + MySQL [DB] + Docker Compose [Containerization]
       </p>
       <h2 className="mt-4 text-center pb-3">Penggunaan API</h2>
 

@@ -1,5 +1,5 @@
 .container {
-  max-width: 900px;
+  max-width: 550px;
   margin-left: auto;
   margin-right: auto;
   @apply bg-white rounded-md p-3 shadow-lg
