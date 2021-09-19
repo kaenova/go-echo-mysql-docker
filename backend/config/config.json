@@ -3,6 +3,6 @@
   "DB_HOST" : "localhost",
   "DB_Username" : "root",
   "DB_Pass" : "root",
-  "DB_Name" : "test_create",
+  "DB_Name" : "default_db_echo",
   "DB_Table" : ["Pegawai"]
 }

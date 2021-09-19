@@ -1,11 +1,18 @@
+# !!! README !!!
+# If you want to use this, make sure you already run
+#  | npm install | on frontend folder
+# Also if you fire it up for the first time, the backend won't run.
+# You need to wait for DB is ready and then restart the container
+# This development compose is only works on linux
+
 version: "3"
 
 services:
-  # backend
+  # backend (Development)
   backend:
     build: 
       context: backend/
-      dockerfile: Dockerfile
+      dockerfile: DockerfileDev
     expose: 
       - "1323"
     restart: unless-stopped
@@ -13,18 +20,23 @@ services:
       DB_HOST: db
     depends_on: 
       - db
+    volumes: 
+      - ./backend:/app
 
-  # frontend
+  # frontend (Development)
   frontend:
     build: 
       context: frontend/
-      dockerfile: Dockerfile
+      dockerfile: DockerfileDev
     expose: 
       - "3000"
     restart: "unless-stopped"
     depends_on: 
       - db
       - backend
+    volumes: 
+      - ./frontend:/app
+
 
   # databases
   db:
@@ -44,6 +56,8 @@ services:
       - "80:80"
       - "443:443"
     restart: "unless-stopped"
+    volumes: 
+      - "./gateway/nginx.conf:/etc/nginx/nginx.conf:ro"
 
 
   
