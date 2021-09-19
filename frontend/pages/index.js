@@ -19,7 +19,14 @@ export default function Home() {
         <Link href="/pegawai">
         <a className={styles.list_container} href="#">Tampilkan Semua Pegawai</a>
         </Link>
+
+        <Link href="/tambah">
+        <a className={styles.list_container} href="#">Tambah Pegawai</a>
+        </Link>
+        
+        <Link href="/edit">
         <a className={styles.list_container} href="#">Edit Pegawai</a>
+        </Link>
         <a className={styles.list_container} href="#">Hapus Pegawai</a>
       </div>
     </div>
