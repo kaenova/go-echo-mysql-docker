@@ -27,7 +27,10 @@ export default function Home() {
         <Link href="/edit">
         <a className={styles.list_container} href="#">Edit Pegawai</a>
         </Link>
+
+        <Link href="/delete">
         <a className={styles.list_container} href="#">Hapus Pegawai</a>
+        </Link>
       </div>
     </div>
   )
