@@ -1,3 +1,10 @@
+# !!! README !!!
+# If you want to use this, make sure you already run
+#  | npm install | on frontend folder
+# Also if you fire it up for the first time, the backend won't run.
+# You need to wait for DB is ready and then restart the container
+# This development compose is only works on linux
+
 version: "3"
 
 services:
