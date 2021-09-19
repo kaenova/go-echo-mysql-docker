@@ -36,7 +36,6 @@ func FetchAllPegawai() (Response, error) {
 		if err != nil {
 			return res, err
 		}
-
 		arrObj = append(arrObj, obj)
 	}
 
@@ -97,9 +96,12 @@ func StorePegawai(nama, alamat, telepon string) (Response, error) {
 		fmt.Sprintf(`INSERT INTO Pegawai (Nama, Alamat, Telepon) VALUES ("%s", "%s", "%s")`,
 			nama, alamat, telepon)
 
-	_, err := con.Exec(sqlStatement)
+	result, err := con.Exec(sqlStatement)
 	if err != nil {
 		return res, err
+	}
+	if check, err_temp := result.RowsAffected(); check == 0 || err_temp != nil {
+		return res, errors.New("Gagal memasukkan Pegawai")
 	}
 
 	var obj = struct {

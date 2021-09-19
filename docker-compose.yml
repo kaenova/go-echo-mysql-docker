@@ -1,10 +1,11 @@
 version: "3"
 
 services:
-  # backend
+  # backend (Development)
   backend:
     build: 
       context: backend/
+      dockerfile: DockerfileDev
     expose: 
       - "1323"
     restart: unless-stopped
@@ -12,6 +13,8 @@ services:
       DB_HOST: db
     depends_on: 
       - db
+    volumes: 
+      - ./backend:/app
 
   # frontend (Development)
   frontend:

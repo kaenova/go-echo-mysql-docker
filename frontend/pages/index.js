@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from './index.module.css'
+import Link from 'next/link'
 
 export default function Home() {
   return (
@@ -13,18 +14,13 @@ export default function Home() {
         Golang (Echo) [Backend] + MySQL [Database] + Docker - Docker Compose [Containerization] + Next.JS [Frontend]
       </p>
       <h2 className="mt-4 text-center pb-3">Penggunaan API</h2>
+
       <div className="ml-3 text-center grid">
+        <Link href="/pegawai">
         <a className={styles.list_container} href="#">Tampilkan Semua Pegawai</a>
-        <a href="#" className={styles.list_container}> 
-          Tampilkan Pegawai by ID 
-          <p className="font-bold">Masukkan ID:</p>
-          <input className="w-1/2 shadow rounded-sm" type="number" name="" id="" value="1"/>
-        </a>
-        <div>
-          
-        </div>
-        <a className={styles.list_container} href="#">Tampilkan Semua Pegawai</a>
-        <a className={styles.list_container} href="#">Tampilkan Semua Pegawai</a>
+        </Link>
+        <a className={styles.list_container} href="#">Edit Pegawai</a>
+        <a className={styles.list_container} href="#">Hapus Pegawai</a>
       </div>
     </div>
   )
