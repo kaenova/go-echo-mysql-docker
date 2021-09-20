@@ -70,8 +70,6 @@ func FetchPegawaiIDOrNama(id_string string, nama string) (Response, error) {
 		next = true
 	}
 
-	fmt.Println(sqlStatement)
-
 	con := db.CreateCon()
 	rows, err := con.Query(sqlStatement)
 	if err != nil {
