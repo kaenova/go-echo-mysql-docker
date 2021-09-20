@@ -24,9 +24,9 @@ export default function Home() {
         <a className={styles.list_container} href="#">Tambah Pegawai</a>
         </Link>
         
-        <Link href="/edit">
+        {/* <Link href="/edit">
         <a className={styles.list_container} href="#">Edit Pegawai</a>
-        </Link>
+        </Link> */}
 
         <Link href="/delete">
         <a className={styles.list_container} href="#">Hapus Pegawai</a>
