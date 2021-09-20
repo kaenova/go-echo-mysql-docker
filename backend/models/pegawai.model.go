@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"go_echo_rest/db"
 	"net/http"
-	"strconv"
 	"strings"
 )
 
@@ -25,6 +24,9 @@ func FetchAllPegawai() (Response, error) {
 
 	sqlStatement := "SELECT * FROM Pegawai"
 	rows, err := con.Query(sqlStatement)
+	if err != nil {
+		return res, err
+	}
 	defer rows.Close()
 
 	if err != nil {
@@ -45,21 +47,36 @@ func FetchAllPegawai() (Response, error) {
 	return res, nil
 }
 
-func FetchPegawaiID(id_string string) (Response, error) {
+func FetchPegawaiIDOrNama(id_string string, nama string) (Response, error) {
 	var (
 		res    Response
 		obj    Pegawai
 		arrObj []Pegawai
+		next   bool = false
 	)
-	_, err := strconv.Atoi(id_string)
-	if err != nil {
-		return res, errors.New("ID Tidak Valid")
+
+	sqlStatement := "SELECT * FROM Pegawai WHERE "
+	// ID Handler
+	if id_string != "" {
+		sqlStatement = sqlStatement + `(idPegawai = ` + id_string + ") "
+		next = true
 	}
 
-	con := db.CreateCon()
-	sqlStatement := "SELECT * FROM Pegawai WHERE idPegawai = " + id_string
+	if strings.TrimSpace(nama) != "" {
+		if next {
+			sqlStatement = sqlStatement + "OR "
+		}
+		sqlStatement = sqlStatement + "(Nama LIKE '" + nama + "%') "
+		next = true
+	}
 
+	fmt.Println(sqlStatement)
+
+	con := db.CreateCon()
 	rows, err := con.Query(sqlStatement)
+	if err != nil {
+		return res, err
+	}
 	defer rows.Close()
 	if err != nil {
 		return res, err
@@ -122,8 +139,8 @@ func StorePegawai(nama, alamat, telepon string) (Response, error) {
 
 // Delete
 func DeletePegawai(nama, telepon string) (Response, error) {
-	var res Response
 
+	var res Response
 	sqlStatement := `DELETE FROM Pegawai WHERE Nama="` + nama + `" AND Telepon="` +
 		telepon + `"`
 	con := db.CreateCon()

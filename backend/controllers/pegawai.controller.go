@@ -12,15 +12,17 @@ import (
 func FetchPegawai(c echo.Context) error {
 	var (
 		id     string          = ""
+		nama   string          = ""
 		result models.Response = models.CreateResponse()
 		err    error           = nil
 	)
 
 	id = c.QueryParam("id")
+	nama = c.QueryParam("nama")
 
 	// if no query
-	if id != "" {
-		result, err = models.FetchPegawaiID(id)
+	if id != "" || strings.TrimSpace(nama) != "" {
+		result, err = models.FetchPegawaiIDOrNama(id, nama)
 	} else {
 		result, err = models.FetchAllPegawai()
 	}
