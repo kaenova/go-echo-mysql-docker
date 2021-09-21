@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { Component } from 'react'
 import styles from '../pages/index.module.css'
+import {motion} from 'framer-motion'
 
 
 export default class DeletePegawai extends Component {
@@ -83,12 +84,14 @@ export default class DeletePegawai extends Component {
       return (
         <div className="w-3/4 ml-auto mr-auto mt-5 grid grid-flow-row justify-center">
           <h2 className="text-red-600 text-sm text-center">Apakah anda yakin ingin menghapus pegawai tersebut?</h2> 
-          <button className="bg-red-500 hover:bg-red-600" onClick={this.hapus_pegawai}>Saya mengerti dan hapus</button>
+          <motion.button className="bg-red-500 hover:bg-red-600" onClick={this.hapus_pegawai}
+          whileHover={{scale:1.1}}>Saya mengerti dan hapus</motion.button>
         </div>
       )
     }
   }
 
+  
 
   render() {
     return (
@@ -105,7 +108,8 @@ export default class DeletePegawai extends Component {
               Telepon:
                 <input type="number" name="telepon" id="telepon" placeholder="+628572830777" required/>
             </label>
-            <button type="submit" className="mt-5 w-1/2 mr-auto ml-auto">Submit</button>
+            <motion.button type="submit" className="mt-5 w-1/2 mr-auto ml-auto"
+            whileTap={{scale:0.9}}>Submit</motion.button>
           </form>
 
           {this.confirmation()}
