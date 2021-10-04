@@ -9,6 +9,15 @@ If you want to try, please make sure docker and docker compose are installed.
   Linux:  
   ``` docker-compose -f docker-compose.yml up -d ```  
   
+
+Now available with kubernetes!  
+thx to https://kompose.io/
+Here's how you can do it:
+1. build the image  
+  ``` docker-compose build ```
+2. run it  
+  ``` kubectl apply -f kubemanifests.yaml --validate=false ```
+  
 Postman : https://documenter.getpostman.com/view/17343050/U16qKPRz
   
 just fire it up with the command above and make sure port 80 and 443 are available   
