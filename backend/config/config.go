@@ -29,6 +29,7 @@ func GetConfig() Config {
 			conf.DB_PORT = 3306
 		}
 	}
+	conf.DB_Name = "DB"
 	if len(os.Getenv("DB_HOST")) != 0 {
 		conf.DB_HOST = os.Getenv("DB_HOST")
 	}

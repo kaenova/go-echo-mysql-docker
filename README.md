@@ -17,6 +17,14 @@ Here's how you can do it:
   ``` docker-compose build ```
 2. run it  
   ``` kubectl apply -f kubemanifests.yaml --validate=false ```
+
+Now with ingress!
+1. build the image  
+  ``` docker-compose build ```
+2. Installing Ingress Controller (Nginx LoadBalancer)
+  ``` kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.0.0/deploy/static/provider/cloud/deploy.yaml ```
+3. run it  
+  ``` kubectl apply -f kubemanifests.yaml --validate=false ```
   
 Postman : https://documenter.getpostman.com/view/17343050/U16qKPRz
   
